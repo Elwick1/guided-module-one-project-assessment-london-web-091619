@@ -17,5 +17,4 @@ class User < ActiveRecord::Base
         review.content
       end
     end
-
 end 

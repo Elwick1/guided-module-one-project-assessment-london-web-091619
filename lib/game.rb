@@ -5,9 +5,4 @@ class Game < ActiveRecord::Base
     def self.all_names
         all.map { |game| game.name }
       end
-
-      # def self.all_descriptions
-      #   all.map { |game| game.description }
-      # end
-
 end

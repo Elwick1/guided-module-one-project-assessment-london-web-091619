@@ -1,8 +1,6 @@
 class CLI
     @@prompt = TTY::Prompt.new
-
-    #Welcomes user to THE VAULT - posts welcome message.
-
+        #Welcomes user to THE VAULT - posts welcome message.
     def run 
         clear_console
         display_title
@@ -26,14 +24,13 @@ class CLI
             @@prompt.keypress("ERR0R - VAULT MEMBER NOT FOUND! check again, right now it looks like you don't exist! Make an Account or Try again and check your Typing!")
         run
     end
-    #create a new user/password 
+            #create a new user/password 
     def create_user
         username = @@prompt.ask("Please Enter Your Desired Username: ", active_color: :magenta)
         password = @@prompt.ask("Please Enter Your Desired Password: ", active_color: :magenta)
         User.create(username: username, password: password)
     end
-
-    #Logs user in or out
+            #Logs user in or out
     def login
         username = @@prompt.ask("Enter your username: ", active_color: :magenta)
         password = @@prompt.mask("Enter your password: ")   #wanted password to be invisible, like a real app!
@@ -42,13 +39,10 @@ class CLI
     #Shows the Vault menu, gives options to create a new review, show list of games owned by user, shows users past reviews
     def main_menu
        display_title
-        #clear_console
         selection = @@prompt.select("So, What are you here for?", "My Games List", "List My Reviews", "Check Out Other Games In The VAULT", "Review a Game", "Exit The VAULT", active_color: :magenta)
         if selection == "My Games List"
-        # print_user_games
-            puts "Feature not yet Available to the VAULT - We're working on it!"
+        puts "Feature not yet Available to the VAULT - We're working on it!"
             main_menu
-       # @current_user 
         elsif selection == "List My Reviews"
             show_user_reviews
         elsif selection == "Check Out Other Games In The VAULT"
@@ -60,12 +54,7 @@ class CLI
         end
         main_menu 
     end
-        #enables user to see list of owned games
-    # def print_user_games
-    #     user_games = @current_user.games 
-    # end
-        
-        #enables user to see past reviews
+         #enables user to see past reviews
     def show_user_reviews
         clear_console
         users_reviews = @current_user.reviews
@@ -107,8 +96,7 @@ class CLI
         @current_user = User.find(@current_user.id)
         puts "Your Review Has Been Altered"
     end
-
-    #delete a review 
+            #delete a review 
     def delete_review
         clear_console
         display_title
@@ -118,15 +106,12 @@ class CLI
         @current_user = User.find(@current_user.id) 
         puts "Your Review Has Been Ejected From The VAULT"
     end
-
-    #clears terminal after every prompt so it looks prettier 
+        #clears terminal after every prompt so it looks prettier 
     def clear_console
         system "clear"
     end
-    
-    #select a game and see it's description
+        #select a game and see it's description
     def list_games
-        # clear_console
         selection = @@prompt.select("Current Games In The Vault Are", Game.all_names << "Return to Main Menu", active_color: :magenta)
         if selection == "Return to Main Menu"
             main_menu
@@ -136,11 +121,7 @@ class CLI
         list_games
         end
     end
-
-    # def average_review
-    #     puts Review.average 
-    # end
-
+    
     def display_title
         puts "
 ::::::::::: :::    ::: ::::::::::      :::     :::     :::     :::    ::: :::    ::::::::::: 
@@ -152,6 +133,5 @@ class CLI
     ###     ###    ### ##########          ###     ###     ###  ########  ########## ###             
         "
     end
-
 end
 
