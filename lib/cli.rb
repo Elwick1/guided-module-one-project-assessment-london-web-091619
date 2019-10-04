@@ -39,13 +39,13 @@ class CLI
     #Shows the Vault menu, gives options to create a new review, show list of games owned by user, shows users past reviews
     def main_menu
        display_title
-        selection = @@prompt.select("So, What are you here for?", "My Games List", "List My Reviews", "Check Out Other Games In The VAULT", "Review a Game", "Exit The VAULT", active_color: :magenta)
+        selection = @@prompt.select("So, What are you here for?", "My Games List", "List My Reviews", "Check Out Current Games In The VAULT", "Review a Game", "Exit The VAULT", active_color: :magenta)
         if selection == "My Games List"
         puts "Feature not yet Available to the VAULT - We're working on it!"
             main_menu
         elsif selection == "List My Reviews"
             show_user_reviews
-        elsif selection == "Check Out Other Games In The VAULT"
+        elsif selection == "Check Out Current Games In The VAULT"
             list_games
         elsif selection == "Review a Game"
             review_game
